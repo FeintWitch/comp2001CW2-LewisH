@@ -1,0 +1,7 @@
+pip install pyodbc
+
+##main##
+from flask import Flask
+
+##this section is creating flask app##
+app = Flask(__name__)
