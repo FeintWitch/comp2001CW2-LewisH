@@ -1,4 +1,5 @@
-from flask import Flask, render_template
+##from flask import Flask, render_template
+from flask import g
 import pyodbc
 
 ####the connection to the database###
@@ -8,19 +9,32 @@ def get_db_connection():
             "DRIVER={ODBC Driver 17 for SQL Server};"
             "SERVER=localhost;"
             "DATABASE=cw2;"
-            "UID=SA"
-            "PWD=C0mp2001"
-            "TrustServerCertificate=yes"
-
+            "UID=SA;"
+            "PWD=C0mp2001;"
+            "TrustServerCertificate=yes;"
         )
-    cursor = connection.cursor()
-    print("Connected to the database")
+        return g.db_connection
+    
+###This sectiion bellow will be the tester## 
+    try:   
+        curser = g.db_connection.cursor()
+        curser.execute("SELECT 1")
+        print("database connection is working")
+    except pyodbc.Error as e:
+        print("Error connecting to the database")
+        g.db_connection = None
+    return g.db_connection
 
-app = Flask(__name__)
 
-@app.route("/")
-def home():
-    return render_template("home.html")
 
-if __name__ == "__main__":11
-app.run(host="0.0.0.0", port=8000, debug=True)
+
+
+###the flash###
+##app = Flask(__name__)
+
+##@app.route("/")
+##def home():
+##    return render_template("home.html")
+
+##if __name__ == "__main__":11
+##app.run(host="0.0.0.0", port=8000, debug=True)
