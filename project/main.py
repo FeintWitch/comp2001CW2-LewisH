@@ -1,5 +1,5 @@
 from flask import Flask
-from db_connection import db_connection, close_db_connection
+from db_connection import get_db_connection, close_db_connection
 
 app = Flask(__name__)
 
