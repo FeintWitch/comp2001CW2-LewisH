@@ -1,14 +1,26 @@
-import pymssql##main##
-###I think this will work. lets hope so.###
+from flask import Flask, render_template
+import pyodbc
 
-try: 
-    connection = pymssql(
-    server = 'COMP2001sqlserv',
-    database = 'cw2',
-    trusted = 'yes'
-    )
+####the connection to the database###
+def get_db_connection():
+    if 'db_connection' not in g:
+        g.db_connection= pyodbc.connect(
+            "DRIVER={ODBC Driver 17 for SQL Server};"
+            "SERVER=localhost;"
+            "DATABASE=cw2;"
+            "UID=SA"
+            "PWD=C0mp2001"
+            "TrustServerCertificate=yes"
 
+        )
+    cursor = connection.cursor()
     print("Connected to the database")
-except Exception as e:
-    print("Error connecting to the database: ", e)
-    
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return render_template("home.html")
+
+if __name__ == "__main__":11
+app.run(host="0.0.0.0", port=8000, debug=True)
