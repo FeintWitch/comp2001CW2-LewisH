@@ -16,5 +16,4 @@ info:
         responses:
           "200":
             description: "successful read all users"
-            
-              
+      
