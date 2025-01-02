@@ -1,17 +1,20 @@
 ##this is a swagger file
 
-open ai: 3.0.0
+openapi: 3.0.0
 info:
-  title:"rp flask rest api"
-  description: "an api for coursework. Users, notes and possibly more"
+  title: "trail flask rest api"
+  description: "an api for coursework Users, descriptions, tags and possibly more"
   version: "1.0.0"
+
+  servers:
+    - url: "/api"
 
   paths:
     /users:
       get:
         summary: "get all users"
         responses:
-          200:
+          "200":
             description: "successful read all users"
             
               
