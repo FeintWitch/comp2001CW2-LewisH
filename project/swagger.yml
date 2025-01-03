@@ -1,19 +1,49 @@
 ##this is a swagger file
-
 openapi: 3.0.0
 info:
-  title: "trail flask rest api"
-  description: "an api for coursework Users, descriptions, tags and possibly more"
+  title: "Trail Flask REST API"
+  description: "An API for coursework: Users, descriptions, tags, and more."
   version: "1.0.0"
 
-  servers:
-    - url: "/api"
+servers:
+    url: "/api"
+    description: "base url for the API"
 
-  paths:
-    /users:
-      get:
-        summary: "get all users"
-        responses:
-          "200":
-            description: "successful read all users"
-      
+  components:
+    schemas:
+      User:
+        type: "object"
+        required:
+          - userName
+          - userSurname
+          - userDate
+          - userid
+          - userEmail
+          - userRole
+          - passwordHash
+        properties:
+          userName:
+            type: "string"
+          userSurname:
+            type: "string"
+          userDate:
+            type: "string"
+            formate: "date"
+          userid:
+            type: "string"
+          userEmail:  
+            type: "string"
+            format: "email"
+          userRole:
+            type: "string"
+          passwordHash:
+            type: "string"
+
+paths: 
+  /users:
+    get:
+      summary: "Get all users"
+      operationId: "main.getUsers"
+      responses:
+        "200":
+          description: "Successfully retrieved all users"

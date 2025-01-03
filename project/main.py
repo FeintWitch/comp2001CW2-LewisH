@@ -7,6 +7,8 @@ app.add_api('swagger.yml')
 @app.route('/')
 def home():
     return render_template('home.html')
+def getUsers():
+    return {"message": "wip"},501
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=8000, debug=True)
