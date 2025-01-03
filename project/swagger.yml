@@ -5,16 +5,15 @@ info:
   description: "An API for coursework Users, descriptions, tags, and more"
   version: 1.0.0
 servers:
-  url: /api
+- url: /api
   description: base url for the API
 components:
   schemas:
-    User:
+    userTable:
       type: object
       required:
         - userName
         - userSurname
-        - userDate
         - userid
         - userEmail
         - userRole
@@ -24,9 +23,6 @@ components:
           type: string
         userSurname:
           type: string
-        userDate:
-          type: string
-          formate: date
         userid:
           type: string
         userEmail:
