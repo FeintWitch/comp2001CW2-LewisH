@@ -36,13 +36,11 @@ components:
         passwordHash:
           type: string
 
-    TrailsTable
+    Trails:
       type: object
       required:
         - trailid
         - trailName
-        - lengthInKm
-        - elevationInM
         - routeType
         - TimeToComplete
         - locationoftrail
@@ -52,12 +50,6 @@ components:
           type: int
         trailName:
           type: string
-        lengthInKm:
-          type: number
-          formate: float
-        elevationInM:
-          type: number
-          formate: float
         routeType:
           type: string
         TimeToComplete:
@@ -78,15 +70,22 @@ paths:
         "200":
           description: Successfully retrieved all users
 
-paths:
+  paths:
   /trails:
     get:
       summary: Get all trails
       operationId: controllers.getTrails
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/TrailsTable'
+      responses:
+        "200":
+          description: Successfully retrieved all trails
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Trails'
+        "400":
+          description: Bad request
+        "500":
+          description: Internal server error
     post:
       summary: add a new trail
       operationId: controllers.addTrail
@@ -95,7 +94,39 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TrailsTable'
+              $ref: '#/components/schemas/Trails'
       responses:
         "201":
           description: Successfully added a new trail
+    put:
+      summary: update a  trail
+      operationId: controllers.updateTrail
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Trails'
+      responses:
+        "201":
+          description: Successfully added updated a trail
+        "400":
+            description: Bad request
+        "500":
+            description: Internal server error
+     delete:
+      summary:  delete trail
+      operationId: controllers.deleteTrail
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Trails'
+      responses:
+        "201":
+          description: Successfully deleted a trail
+        "400":
+            description: Bad request
+        "500":
+            description: Internal server error 

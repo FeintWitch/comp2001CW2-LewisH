@@ -10,7 +10,7 @@ def getUsers():
 
 def getTrails():
     trails = [
-        {"trailid" :"1", "trailname" : "Plymbridge Circular", "lengthInK" :"5.00", "elevationInM" : "147.00", "routeType" :"circular","TimeToComplete":  "83", "location" : "Plymouth Devon", "pets" :"yes"},
+        {"trailid" :"1", "trailname" : "Plymbridge Circular", "lengthInKm" :"5.00", "elevationInM" : "147.00", "routeType" :"circular","TimeToComplete":  "83", "location" : "Plymouth Devon", "pets" :"yes"},
         {"trailid":"2", "trailname":"Plymbridge Old Canal and River Walk", "lengthInKm":"3.00", "elevationInM":"65.00", "routeType":"circular", "TimeToComplete":"42", "location":"Plymouth, Devon", "pets":"yes"},
     ]
     return jsonify(trails)
