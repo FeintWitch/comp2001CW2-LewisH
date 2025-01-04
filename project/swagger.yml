@@ -35,6 +35,40 @@ components:
           type: string
         passwordHash:
           type: string
+
+    TrailsTable
+      type: object
+      required:
+        - trailid
+        - trailName
+        - lengthInKm
+        - elevationInM
+        - routeType
+        - TimeToComplete
+        - locationoftrail
+        - pets
+      properties:
+        trailid:
+          type: int
+        trailName:
+          type: string
+        lengthInKm:
+          type: number
+          formate: float
+        elevationInM:
+          type: number
+          formate: float
+        routeType:
+          type: string
+        TimeToComplete:
+          type: integer
+        locationoftrail:
+          type: string
+        pets:
+          type: string
+
+
+        
 paths:
   /users:
     get:
@@ -43,3 +77,25 @@ paths:
       responses:
         "200":
           description: Successfully retrieved all users
+
+paths:
+  /trails:
+    get:
+      summary: Get all trails
+      operationId: controllers.getTrails
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TrailsTable'
+    post:
+      summary: add a new trail
+      operationId: controllers.addTrail
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TrailsTable'
+      responses:
+        "201":
+          description: Successfully added a new trail
