@@ -32,6 +32,6 @@ for user in users:
 
 cursor.close()
 connection.close()
-```
+
 
 

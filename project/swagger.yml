@@ -28,6 +28,9 @@ components:
         userEmail:
           type: string
           format: email
+        userDate:
+          type: string
+          format: date
         userRole:
           type: string
         passwordHash:
@@ -36,7 +39,7 @@ paths:
   /users:
     get:
       summary: Get all users
-      operationId: main.getUsers
+      operationId: controllers.getUsers
       responses:
         "200":
           description: Successfully retrieved all users
