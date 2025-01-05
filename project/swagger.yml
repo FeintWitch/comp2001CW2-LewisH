@@ -41,15 +41,23 @@ components:
       required:
         - trailid
         - trailName
+        - lengthInKm
+        - elevationInM
         - routeType
         - TimeToComplete
         - locationoftrail
         - pets
       properties:
         trailid:
-          type: int
+          type: integer
         trailName:
           type: string
+        lengthInKm:
+          type: number
+          formate: float
+        elevationInM:
+          type: number
+          formate: float
         routeType:
           type: string
         TimeToComplete:
@@ -70,7 +78,6 @@ paths:
         "200":
           description: Successfully retrieved all users
 
-  paths:
   /trails:
     get:
       summary: Get all trails
@@ -114,7 +121,7 @@ paths:
             description: Bad request
         "500":
             description: Internal server error
-     delete:
+    delete:
       summary:  delete trail
       operationId: controllers.deleteTrail
       requestBody:

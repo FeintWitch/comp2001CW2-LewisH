@@ -3,6 +3,8 @@ import connexion
 import pathlib
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
+from models import db, trails
+from models import db, Users
 
 basedir = pathlib.Path(__file__).parent.resolve()
 connex_app = connexion.App(__name__, specification_dir='./')
@@ -25,11 +27,19 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
 
+##the database##
+db.init_app(app)
+
+
 @connex_app.route('/')
 def home():
     return render_template('home.html')
+
+##api##
 connex_app.add_api('swagger.yml')
     
     
 if __name__ == '__main__':
+    with app.add_app_context():
+        db.create_all()
     connex_app.run(host="0.0.0.0", port=8000, debug=True)
