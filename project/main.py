@@ -19,7 +19,6 @@ app.config["SQLALCHEMY_DATABASE_URI"] = (
     "?driver=ODBC+Driver+17+for+SQL+Server"
     "&TrustServerCertificate=yes"
     "&Encrypt=true"
-    "&Trusted_Connection=yes"
 )
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
