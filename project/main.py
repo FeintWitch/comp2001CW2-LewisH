@@ -1,12 +1,7 @@
 from flask import Flask, render_template
 import connexion
-import pathlib
-from flask_sqlalchemy import SQLAlchemy
-from flask_marshmallow import Marshmallow
-from models import db, trails
-from models import db, Users
+from models import db
 
-basedir = pathlib.Path(__file__).parent.resolve()
 connex_app = connexion.App(__name__, specification_dir='./')
 
 
@@ -24,14 +19,19 @@ app.config["SQLALCHEMY_DATABASE_URI"] = (
 )
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-db = SQLAlchemy(app)
-ma = Marshmallow(app)
-
 ##the database##
 db.init_app(app)
 
+##loading the data on html##
+@app.route('/trails')
+def show_trails():
+    try:
+        trails = Trails.query.all()
+        return render_template('home.html', trails=trails)
+    except Exception as e:
+        return {"error": str(e)}, 500
 
-@connex_app.route('/')
+@app.route('/')
 def home():
     return render_template('home.html')
 

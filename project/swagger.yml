@@ -54,10 +54,10 @@ components:
           type: string
         lengthInKm:
           type: number
-          formate: float
+          format: float
         elevationInM:
           type: number
-          formate: float
+          format: float
         routeType:
           type: string
         TimeToComplete:

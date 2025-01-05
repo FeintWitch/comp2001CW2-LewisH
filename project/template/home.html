@@ -10,4 +10,30 @@
 </head>
 <body>
     <h1>trails</h1>
+    <table border="1">
+        <thread>
+            <tr>
+                <th>Trail name</th>
+                <th>Location</th>
+                <th>Length</th>
+                <th>elevationInM</th>
+                <th>TimeToComplete</th>
+                <th>locationoftrail</th>
+                <th>pets</th>
+            </tr>
+        </thread>
+        <tbody>
+            {% for trail in trails %}
+            <tr>
+                <td>{{trail.trail_name}}</td>
+                <td>{{trail.location}}</td>
+                <td>{{trail.length}}</td>
+                <td>{{trail.elevationInM}}</td>
+                <td>{{trail.timeToComplete}}</td>
+                <td>{{trail.locationoftrail}}</td>
+                <td>{{trail.pets}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
