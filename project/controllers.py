@@ -35,9 +35,9 @@ def updateTrail(trail_id, trail_date):
     except Exception as e:
         return {"error": str(e)}, 500
 
-def deleteTrail(trail_id):
+def deleteTrail(trailid):
     try:
-        trail = trails.query.filter_by(id=trail_id).first()
+        trail = trails.query.filter_by(id=trailid).first()
         if not trail:
             return {"error": "Trail not found"}, 404
         db.session.delete(trail)
